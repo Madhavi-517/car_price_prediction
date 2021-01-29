@@ -1,0 +1,251 @@
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}"/>
+
+<body>
+  <div class="main-content">
+    <div class="container mt-7">
+      <!-- Table -->
+      <div class="row">
+        <div class="col-xl-8 m-auto order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0" style="float: left;">Car price prediction</h3>
+                 <center><h3 style="float: right;color: #2dce89;font-size: 24px;">{{prediction_text}}</h3></center>
+                </div>
+                <!-- <div class="col-4 text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                </div> -->
+              </div>
+            </div>
+            <div class="card-body" style="background-color: transparent ;">
+              <form action="/prediction" method="POST">
+                <h6 class="heading-small text-muted mb-4">Car details</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-carname">Car name</label>
+
+                        <select name='Name' id="input-username" class="form-control form-control-alternative">
+                            <option value="">Name</option>
+                            <option value='Ambassdor'>Ambassdor</option>
+                            <option value='Audi'>Audi</option>
+                            <option value='BMW'>BMW</option>
+                            <option value='Chevrolet'>Chevrolet</option>
+                            <option value='Daewoo'>Daewoo</option>
+                            <option value='Datsun'>Datsun</option>
+                            <option value='Fiat'>Fiat</option>
+                            <option value='Force'>Force</option>
+                            <option value='Ford'>Ford</option>
+                            <option value='Honda'>Honda</option>
+                            <option value='Hyundai'>Hyundai</option>
+                            <option value='Jaguar'>Jaguar</option>
+                            <option value='Jeep'>Jeep</option>
+                            <option value='KIA'>KIA</option>
+                            <option value='Landrover'>Landrover</option>
+                            <option value='Mahindra'>Mahindra</option>
+                            <option value='Maruti'>Maruti</option>
+                            <option value='Mercedes'>Mercedes</option>
+                            <option value='Mitsubishi'>Mitsubishi</option>
+                            <option value='MG'>MG</option>
+                            <option value='Nissan'>Nissan</option>
+                            <option value='Opel'>Opel</option>
+                            <option value='Porsche'>Porsche</option>
+                            <option value='Renault'>Renault</option>
+                            <option value='Skoda'>Skoda</option>
+                            <option value='Ssangyong'>Ssangyong</option>
+                            <option value='Tata'>Tata</option>
+                            <option value='Toyota'>Toyota</option>
+                            <option value='Volkswagen'>Volkswagen</option>
+                            <option value='Volvo'>Volvo</option>
+                        </select>    
+
+                        <!-- <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse"> -->
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Owner</label>
+
+                        <select name='Owner' id="input-email" class="form-control form-control-alternative">
+                            <option value=''>Owner</option>
+                            <option value='First'>First</option>
+                            <option value='Second'>Second</option>
+                            <option value='Third'>Third</option>
+                            <option value='Fourth'>Fourth</option>
+                            <option value='Fifth'>Fifth</option>
+                            <option value='Sixth'>Sixth</option>
+                            <option value='Seventh'>Seventh</option>
+                        </select>
+
+                        <!-- <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com"> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-first-name">Month of Purchase</label>
+
+                        <select name='Month' id="input-first-name" class="form-control form-control-alternative">
+                            <option value=''>Month of Purchase</option>
+                            <option value='1'>January</option>
+                            <option value='2'>February</option>
+                            <option value='3'>March</option>
+                            <option value='4'>April</option>
+                            <option value='5'>May</option>
+                            <option value='6'>June</option>
+                            <option value='7'>July</option>
+                            <option value='8'>August</option>
+                            <option value='9'>September</option>
+                            <option value='10'>October</option>
+                            <option value='11'>November</option>
+                            <option value='12'>December</option>
+                        </select>
+
+                        <!-- <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky"> -->
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-last-name">Year of Purchase</label>
+
+                        <input type='number' name='Year' id="input-last-name" class="form-control form-control-alternative" placeholder='Year' min='1970' max='2022'/>
+
+                        <!-- <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse"> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <!-- Address -->
+                <h6 class="heading-small text-muted mb-4">Additional information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-Kilometers">Kilometers travelled</label>
+                        <input type='number' name='Kilometers' id="input-Kilometers" class="form-control form-control-alternative" placeholder='Kilometers' min='0'/>
+                        <!-- <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text"> -->
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group focused">
+                            <label class="form-control-label" for="input-rating">Rating</label>
+                            <input type='number' name='Rating' step="any" id="input-rating" class="form-control form-control-alternative" placeholder='Rating' min='1' max='5'/>
+                            <!-- <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text"> -->
+                        </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-Fuel_Type">Fuel Type</label>
+                        <select name='Fuel_Type' id="input-Fuel_Type" class="form-control form-control-alternative">
+                            <option value=''>Fuel Type</option>
+                            <option value='Petrol'>Petrol</option>
+                            <option value='Diesel'>Diesel</option>
+                            <option value='Petrol + CNG'>Petrol + CNG</option>
+                            <option value='Petrol + LPG'>Petrol + LPG</option>  
+                        </select>
+                        <!-- <input type='text' name='Rating' id="input-city" class="form-control form-control-alternative" placeholder='Rating'/> -->
+                        <!-- <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York"> -->
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-Transmission">Transmission Type</label>
+                        <select name='Transmission' id="input-Transmission" class="form-control form-control-alternative">
+                            <option value=''>Select Transmission Type</option>
+                            <option value='MANUAL'>Manual</option>
+                            <option value='AUTOMATIC'>Automatic</option>
+                        </select>
+                        <!-- <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States"> -->
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-RTO">RTO</label>
+                        <select name='RTO' id="input-RTO" class="form-control form-control-alternative">
+                            <option value=''>Select RTO</option>
+                            <option value='RTOTS07'>RTOTS07</option>
+                            <option value='RTOAP28'>RTOAP28</option>
+                            <option value='RTODL3C'>RTODL3C</option>
+                            <option value='RTOTN02'>RTOTN02</option>
+                            <option value='RTOKA01'>RTOKA01</option>
+                            <option value='RTOMH02'>RTOMH02</option>
+                            <option value='RTOKL07'>RTOKL07</option>
+                            <option value='RTOHR26'>RTOHR26</option>
+                            <option value='RTOUP32'>RTOUP32</option>
+                            <option value='RTORJ14'>RTORJ14</option>
+                            <option value='RTOJH05'>RTOJH05</option>
+                            <option value='RTOWB02'>RTOWB02</option>
+                            <option value='RTOGJ16'>RTOGJ16</option>
+                            <option value='RTOAN01'>RTOAN01</option>
+                            <option value='RTOPY01'>RTOPY01</option>
+                            <option value='RTOPB10'>RTOPB10</option>
+                            <option value='RTOCG04'>RTOCG04</option>
+                            <option value='RTOCH01'>RTOCH01</option>
+                            <option value='RTOUK07'>RTOUK07</option>
+                            <option value='RTOHP71'>RTOHP71</option>
+                            <option value='RTOJK02'>RTOJK02</option>
+                            <option value='RTOPNP4'>RTOPNP4</option>
+                            <option value='RTOOD04'>RTOOD04</option>
+                            <option value='RTOAS03'>RTOAS03</option>
+                            <option value='RTOUA12'>RTOUA12</option>
+                            <option value='RTOMP28'>RTOMP28</option>
+                            <option value='RTOW06F'>RTOW06F</option>
+                            <option value='RTOBR1A'>RTOBR1A</option>
+                            <option value='RTOGA03'>RTOGA03</option>
+                            <option value='RTOWNW6'>RTOWNW6</option>
+                            <option value='RTOWE02'>RTOWE02</option>
+                        </select>
+                        <!-- <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code"> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <hr class="my-4"> -->
+                <!-- Description -->
+                <!-- <h6 class="heading-small text-muted mb-4">About me</h6> -->
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-Insurance_Type">Insurance Type</label>
+                        <select name='Insurance_Type' id="input-Insurance_Type" class="form-control form-control-alternative">
+                            <option value=''>Insurance Type</option>
+                            <option value='Zero Depreciation'>Zero Depreciation</option>
+                            <option value='Comprehensive'>Comprehensive</option>
+                            <option value='Third Party'>Third Party</option>
+                            <option value='Expired'>Expired</option>
+                        </select>
+                        <!-- <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text"> -->
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group focused">
+                            <label class="form-control-label" for="input-Insurance_date">Insurance Date</label>
+                            <input type='date' name='Insurance' id="input-Insurance_date" class="form-control form-control-alternative" placeholder='Insurance'/>
+                            <!-- <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text"> -->
+                        </div>
+                      </div>
+                  </div>
+                <!-- <div class="pl-lg-4">
+                  <div class="form-group focused">
+                    <label>About Me</label>
+                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                  </div>
+                </div> -->
+                <center><input type="submit" value="Predict" class="btn btn-lg btn-primary"></center>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
